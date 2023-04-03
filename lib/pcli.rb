@@ -1,8 +1,4 @@
-# frozen_string_literal: true
-
-require_relative "pcli/version"
+require_relative 'depends'
 
 module Pcli
-  class Error < StandardError; end
-  # Your code goes here...
 end

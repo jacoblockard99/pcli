@@ -1,0 +1,16 @@
+require_relative '../version'
+require_relative '../step'
+require_relative '../depends'
+
+module Pcli::Steps
+  class Greeting < ::Pcli::Step
+    include Depends.on('output')
+
+    spaced
+
+    def run(_prev)
+      output.puts "The Ponsqb Admin CLI #{Pl.green('v' + Pcli::VERSION)}, at your service!"
+      success
+    end
+  end
+end

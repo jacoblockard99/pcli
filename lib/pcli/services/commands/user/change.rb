@@ -33,6 +33,7 @@ module Pcli
           def call(all:, **args)
             field_args = args.slice(*self.class.field_options)
 
+            spinner = nil
             response = api_manager.ensure_authenticated do
               spinner = SimpleSpinnerBar.start('Retrieving user...', output)
               r = api.me

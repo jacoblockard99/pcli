@@ -1,11 +1,9 @@
-require 'tty-spinner'
+# frozen_string_literal: true
 
 module Pcli
   class SimpleSpinnerBar
     def self.start(template, output)
-      new(template, output).tap do |me|
-        me.start
-      end
+      new(template, output).tap(&:start)
     end
 
     def initialize(template, output)

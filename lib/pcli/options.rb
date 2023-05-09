@@ -1,4 +1,4 @@
-require 'tty-option'
+# frozen_string_literal: true
 
 module Pcli
   class Options

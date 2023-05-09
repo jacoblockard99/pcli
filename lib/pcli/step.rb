@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pcli
   class Step
     class << self
@@ -6,7 +8,7 @@ module Pcli
       end
 
       def ensured?
-        @ensured == nil ? @ensured = false : @ensured
+        @ensured.nil? ? @ensured = false : @ensured
       end
 
       def ensured
@@ -14,10 +16,10 @@ module Pcli
       end
 
       def spaced?
-        @spaced == nil ? @spaced = false : @spaced
+        @spaced.nil? ? @spaced = false : @spaced
       end
 
-      def spaced()
+      def spaced
         @spaced = true
       end
     end

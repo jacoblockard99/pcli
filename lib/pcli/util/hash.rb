@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pcli
   module Util
     class Hash
@@ -10,13 +12,13 @@ module Pcli
 
       def self.require_presence(hash, key, message = nil)
         message ||= "The key \"#{key}\" must be present in the hash #{hash}"
-        raise message unless hash.has_key?(key)
+        raise message unless hash.key?(key)
 
         hash[key]
       end
 
       def self.has_keys?(hash, *keys)
-        keys.all? { |k| hash.has_key?(k) }
+        keys.all? { |k| hash.key?(k) }
       end
     end
   end

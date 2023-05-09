@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Pcli
   class ApiRequest
     def initialize(path)
@@ -15,7 +17,7 @@ module Pcli
         @method
       end
     end
-    
+
     def path(value = nil)
       if value
         @path = value
@@ -46,6 +48,11 @@ module Pcli
       else
         @headers
       end
+    end
+
+    def header(key, value)
+      @headers[key] = value
+      self
     end
 
     attr_writer :path, :method, :params, :headers

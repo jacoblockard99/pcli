@@ -1,4 +1,4 @@
-require_relative 'util/hash'
+# frozen_string_literal: true
 
 module Pcli
   class ApiResponse
@@ -14,7 +14,7 @@ module Pcli
     end
 
     def json
-      if @json == nil
+      if @json.nil?
         begin
           @json = JSON.parse(body)
         rescue JSON::ParserError
@@ -46,7 +46,7 @@ module Pcli
     end
 
     def error
-      return @error unless @error == nil
+      return @error unless @error.nil?
 
       return @error = false unless state == :error
 
@@ -61,8 +61,8 @@ module Pcli
     private
 
     def valid_error_schema
-        Util::Hash.has_keys?(json, 'error', 'status') &&
-          Util::Hash.has_keys?(json['error'], 'type', 'title', 'message')
+      Util::Hash.has_keys?(json, 'error', 'status') &&
+        Util::Hash.has_keys?(json['error'], 'type', 'title', 'message')
     end
 
     def calculate_state
@@ -70,12 +70,10 @@ module Pcli
 
       if success_status
         :success
+      elsif valid_error_schema
+        :error
       else
-        if valid_error_schema
-          :error
-        else
-          :unknown_error
-        end
+        :unknown_error
       end
     end
 

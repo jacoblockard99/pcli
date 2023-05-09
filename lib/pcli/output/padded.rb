@@ -1,34 +1,32 @@
-require_relative '../output'
+# frozen_string_literal: true
 
 module Pcli
-  class Output::Padded
-    def self.show(input, output, screen)
-      amount = 5
-      messages = input
+  module Output
+    class Padded
+      def self.show(input, output, screen)
+        amount = 5
+        messages = input
 
-      if !messages.respond_to?(:each)
-        messages = [messages]
-      end
+        messages = [messages] unless messages.respond_to?(:each)
 
-      messages = messages.flat_map { |m| m == '' ? '' : m.split("\n") }
+        messages = messages.flat_map { |m| m == '' ? '' : m.split("\n") }
 
-      length = screen.width - amount
-      result = ''
+        length = screen.width - amount
+        result = ''
 
-      messages.each do |message|
-        message.each_char.with_index do |c, i|
-          if i % length == 0
-            if i > 0
-              result += "\n"
+        messages.each do |message|
+          message.each_char.with_index do |c, i|
+            if (i % length).zero?
+              result += "\n" if i.positive?
+              result += ' ' * amount
             end
-            result += ' ' * amount
+            result += c
           end
-          result += c
+          result += "\n"
         end
-        result += "\n"
-      end
 
-      output.print(result)
+        output.print(result)
+      end
     end
   end
 end

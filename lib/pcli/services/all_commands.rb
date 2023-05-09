@@ -9,6 +9,9 @@ module Pcli
         user_password: 'commands.user.password',
         user_totp: 'commands.user.totp',
         users_list: 'commands.users.list',
+        users_create: 'commands.users.create',
+        users_change: 'commands.users.change',
+        users_remove: 'commands.users.remove',
         login: 'commands.login',
         logout: 'commands.logout',
       )
@@ -28,6 +31,9 @@ module Pcli
 
           register 'users', aliases: %w[admins u] do |p|
             p.register 'list', me.users_list, aliases: %w[l all index]
+            p.register 'change', me.users_change, aliases: %w[ch chng update up modify mod]
+            p.register 'create', me.users_create, aliases: %w[make new n]
+            p.register 'remove', me.users_remove, aliases: %w[rem r delete del d destroy]
           end
 
           register 'login', me.login, aliases: %w[signin authenticate auth]

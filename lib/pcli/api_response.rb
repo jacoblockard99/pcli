@@ -66,7 +66,7 @@ module Pcli
     end
 
     def calculate_state
-      return :invalid_response unless json
+      return :invalid_response unless json || body.nil? || body == ''
 
       if success_status
         :success

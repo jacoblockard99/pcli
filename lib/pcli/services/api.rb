@@ -46,6 +46,22 @@ module Pcli
         send authenticated(ApiRequest.new('admin/admins'))
       end
 
+      def change_user(id, payload)
+        send authenticated(ApiRequest.new("admin/admins/#{id}"))
+          .method(:patch)
+          .params(payload)
+      end
+
+      def create_user(payload)
+        send authenticated(ApiRequest.new('admin/admins'))
+          .method(:post)
+          .params(payload)
+      end
+
+      def remove_user(id)
+        send authenticated(ApiRequest.new("admin/admins/#{id}")).method(:delete)
+      end
+
       private
 
       def authenticated(request)

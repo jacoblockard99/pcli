@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   # guide at: https://bundler.io/guides/creating_gem.html
   #
 
-  spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'byebug', '~> 11.1'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rubocop', '~> 1.21'
   spec.add_development_dependency 'rubocop-rake', '~> 0.6.0'

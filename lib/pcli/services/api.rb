@@ -62,6 +62,16 @@ module Pcli
         send authenticated(ApiRequest.new("admin/admins/#{id}")).method(:delete)
       end
 
+      def templates
+        send authenticated(ApiRequest.new('admin/templates'))
+      end
+
+      def change_template(id, payload)
+        send authenticated(ApiRequest.new("admin/templates/#{id}"))
+          .method(:patch)
+          .params(payload)
+      end
+
       private
 
       def authenticated(request)

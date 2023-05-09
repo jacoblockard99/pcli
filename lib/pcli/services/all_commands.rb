@@ -12,6 +12,8 @@ module Pcli
         users_create: 'commands.users.create',
         users_change: 'commands.users.change',
         users_remove: 'commands.users.remove',
+        templates_list: 'commands.templates.list',
+        templates_change: 'commands.templates.change',
         login: 'commands.login',
         logout: 'commands.logout',
       )
@@ -34,6 +36,11 @@ module Pcli
             p.register 'change', me.users_change, aliases: %w[ch chng update up modify mod]
             p.register 'create', me.users_create, aliases: %w[make new n]
             p.register 'remove', me.users_remove, aliases: %w[rem r delete del d destroy]
+          end
+
+          register 'templates', aliases: %w[temps temp tmp t] do |p|
+            p.register 'list', me.templates_list, aliases: %w[l all index]
+            p.register 'change', me.templates_change, aliases: %w[ch chng update up modify mod]
           end
 
           register 'login', me.login, aliases: %w[signin authenticate auth]

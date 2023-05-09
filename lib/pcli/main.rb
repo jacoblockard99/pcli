@@ -11,6 +11,7 @@ module Pcli
         c.register_instance 'output', $stdout
         c.register_instance 'screen', TTY::Screen
         c.register_instance 'which', TTY::Which
+        c.register_instance 'editor', TTY::Editor
 
         c.register_module Services
       end

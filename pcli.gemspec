@@ -51,4 +51,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'tty-table', '~> 0.12.0'
   spec.add_dependency 'tty-which', '~> 0.5.0'
   spec.add_dependency 'zeitwerk', '~> 2.6'
+  spec.add_dependency 'tty-editor', '~> 0.7.0'
 end
